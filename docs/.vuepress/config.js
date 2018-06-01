@@ -4,8 +4,7 @@ module.exports = {
 	themeConfig: {
 		nav: [
 			{text: 'Sections', link: '/'},
-			{text: 'About', link: '/setup/'},
-			{text: 'hmmm', link: '/section2/'}
+			{text: 'About', link: '/about'}
 		],
 		sidebar: [
 			'/',

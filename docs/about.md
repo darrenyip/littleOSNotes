@@ -1,0 +1,3 @@
+# About us
+
+We are students from SUNY Albany. Me and [Connor](https://github.com/zuolizhu) created this documentation for student who is studying the operating system development from this [excellent book](https://littleosbook.github.io/) and looking for help. Most of the code are referenced from the original book, we added our code for some **hidden** details. You will see the entire code base which should be able to run on your computer. This documentation is still under working. If you have any question, feel free to contact us in our [repository](https://github.com/darrenyip/littleOSNotes).

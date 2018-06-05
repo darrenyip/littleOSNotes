@@ -64,6 +64,8 @@ nasm -f elf loader.s
 
 Then refresh your folder or type `ls` in your terminal, you will see the new created binary file called `loader.o`.
 
+![2.3.1_loadero](./images/section2/2.3.1_loadero.png)
+
 ### 2.3.2 Linking the kernel
 
 In the same folder, create a new file called `link.ld`. Then paste code below:
@@ -148,6 +150,11 @@ Double check the file tree shown below:
 
 Make sure you placed your files in right place. I know it looks weird, but you will get familiar with this. :wink:
 
+::: tip
+You can type command `tree` to display the file tree as picture shown below.
+:::
+![2.3.4_filetree](./images/section2/2.3.4_filetree.png)
+
 Then run the following crazy long command :scream: :
 
 ```shell
@@ -168,6 +175,8 @@ You can write the command above in one line without the backslash `\`.
 :::
 
 If everything goes right, you will see a file called `os.iso` has been created in your current working directory.
+
+![2.3.4_osfile](./images/section2/2.3.4_osfile.png)
 
 ### 2.3.5 Running Bochs
 

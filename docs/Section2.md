@@ -206,16 +206,24 @@ bochs -f bochsrc.txt -q
 
 The `Bochs` will start and running, as the screenshot shown below:
 
-
+![2.3.5_startbochs](./images/section2/2.3.5_startbochs.jpg)
 
 Type `c` or `continue` in the `Bochs` console, you should see the `Bochs` starting and displaying a console with some information from GRUB on it.
 
+![2.3.5_continuebochs](./images/section2/2.3.5_continuebochs.jpg)
+
 Click the quit button of the `Bochs` at the upper right corner to quit `Bochs`.
 
+![2.3.5_quitbutton](./images/section2/2.3.5_quitbutton.jpg)
+
 ::: tip
-You can press `Ctrl+C` to exit the current console, then type `quit` to exit `Bochs`.
+You can press `Ctrl+C` to exit the current console, then type `quit` to exit `Bochs` from your terminal.
 :::
 
+![2.3.5_quitbochs](./images/section2/2.3.5_quitbochs.jpg)
+
 After quit, you can open the `bochslog.txt` file, or type `cat bochslog.txt` in terminal, you will find the line with `RAX=00000000CAFEBABE` or `EAX=CAFEBABE` (depending on if you are running Bochs with or without 64 bit support) at the bottom.
+
+![2.3.5_bochslog](./images/section2/2.3.5_bochslog.png)
 
  At this point, you made the first step of you OS development journey! :tada:

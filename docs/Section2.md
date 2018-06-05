@@ -107,9 +107,11 @@ Type following command to combine `loader.o` and `link.ld` into a file called `k
 ld -T link.ld -melf_i386 loader.o -o kernel.elf
 ```
 
+Same as before, you will see the new created file called `kernel.elf` in your current working directory.
+
 ### 2.3.3 Obtaining GRUB
 
-We don't know what is the secret inside the file `stage2_eltorito`, but it is an important lootloader used in the book. Download it by command:
+We don't know what is the secret inside the file `stage2_eltorito`, but it is an important bootloader that used in the book. Download it by command:
 
 ```shell
 wget "http://littleosbook.github.com/files/stage2_eltorito"
@@ -121,7 +123,7 @@ Or you can download from your browser then upload to server.
 
 In order to run our system, we need make an ISO image so that `bochs` can load it. The kernel ISO image will be created by `genisoimage`.
 
-First, run following commands:
+First, run the following commands:
 
 ```shell
 mkdir -p iso/boot/grub				# create the folder structure
@@ -207,11 +209,11 @@ Save your `bochsrc.txt, ` then run the command:
 bochs -f bochsrc.txt -q
 ```
 
-The `Bochs` will start and running, as the screenshot shown below:
+The `Bochs` will start and run, as the screenshot shown below:
 
 ![2.3.5_startbochs](./images/section2/2.3.5_startbochs.jpg)
 
-If you see a blank screen as the picture shown above, don't worry, type `c` or `continue` in **the `Bochs` console** (the righthand side window, not the left window), you should see the `Bochs` starting and displaying a console with some information from GRUB on it. Like the image shown below, notice the left window displayed some information, with a blinking cursor.
+If you see a blank screen in the `Bochs` as the picture shown above, don't worry, type `c` or `continue` in **the `Bochs` console** (the righthand side window, not the left window), you should see the `Bochs` start and displaying a console with some information on it. Like the image shown below, notice that the left window displayed some information with a blinking cursor.
 
 ![2.3.5_continuebochs](./images/section2/2.3.5_continuebochs.jpg)
 

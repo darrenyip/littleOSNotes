@@ -7,8 +7,8 @@
     <meta name="description" content="">
     
     
-    <link rel="preload" href="/assets/css/6.styles.1e633b4b.css" as="style"><link rel="preload" href="/assets/js/app.adfaad64.js" as="script"><link rel="preload" href="/assets/js/3.935233c7.js" as="script"><link rel="prefetch" href="/assets/js/2.c063c289.js"><link rel="prefetch" href="/assets/js/0.079ca4c8.js"><link rel="prefetch" href="/assets/js/1.52d31e16.js"><link rel="prefetch" href="/assets/js/4.7668156b.js"><link rel="prefetch" href="/assets/js/5.50ec6a1e.js">
-    <link rel="stylesheet" href="/assets/css/6.styles.1e633b4b.css">
+    <link rel="preload" href="/assets/css/6.styles.45ac861a.css" as="style"><link rel="preload" href="/assets/js/app.2f867765.js" as="script"><link rel="preload" href="/assets/js/3.f16fb449.js" as="script"><link rel="prefetch" href="/assets/js/0.8b004d7d.js"><link rel="prefetch" href="/assets/js/1.10f48b55.js"><link rel="prefetch" href="/assets/js/2.14ba61cd.js"><link rel="prefetch" href="/assets/js/4.41d1f7f9.js"><link rel="prefetch" href="/assets/js/5.31bfc932.js">
+    <link rel="stylesheet" href="/assets/css/6.styles.45ac861a.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
@@ -31,8 +31,8 @@ loader:                         ; the loader label (defined as entry point in li
 mov eax, 0xCAFEBABE         ; place the number 0xCAFEBABE in the register eax
 .loop:
 jmp .loop                   ; loop forever
-</code></pre></div><p>The code above will write a very specific number <code>0xCAFEBABE</code> to the register <code>eax</code>.</p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>If you are comfortable using vim, you can create the file by <code>vim loader.s</code>. Then press <code>i</code> on your keyboard to type code. You will see the line of words <code>-- INSERT --</code> at the bottom. You can start type or paste the code from above. After you finished, press <code>Esc</code> on your keyboard, hold <code>Shift</code> then press <code>colon</code>, the cursor moved to the botton, then type <code>x</code> and press <code>Enter</code> to save your work.</p></div><p><img src="/assets/img/2.3.1_vim.01d387d7.jpg" alt="2.3.1_vim"></p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>Or you can use any text editor you like on your local machine, after you finished editing your code, upload your <code>loader.s</code> file to the server via MobaXterm.</p></div><p><img src="/assets/img/2.3.1_mobax.4a79a217.jpg" alt="2.3.1_mobax"></p><p>Like .c file, you cannot run it directly, you have to compile this file. In terminal, type command:</p><div class="language-shell extra-class"><pre class="language-text"><code>nasm -f elf loader.s
-</code></pre></div><p>Then refresh your folder or type <code>ls</code> in your terminal, you will see the new created binary file called <code>loader.o</code>.</p><h3 id="_2-3-2-linking-the-kernel"><a href="#_2-3-2-linking-the-kernel" aria-hidden="true" class="header-anchor">#</a> 2.3.2 Linking the kernel</h3><p>In the same folder, create a new file called <code>link.ld</code>. Then paste code below:</p><div class="language-assembly extra-class"><pre class="language-text"><code>ENTRY(loader)                /* the name of the entry label */
+</code></pre></div><p>The code above will write a very specific number <code>0xCAFEBABE</code> to the register <code>eax</code>.</p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>If you are comfortable using vim, you can create the file by <code>vim loader.s</code>. Then press <code>i</code> on your keyboard to type code. You will see the line of words <code>-- INSERT --</code> at the bottom. You can start type or paste the code from above. After you finished, press <code>Esc</code> on your keyboard, hold <code>Shift</code> then press <code>colon</code>, the cursor moved to the botton, then type <code>x</code> and press <code>Enter</code> to save your work.</p></div><p><img src="/assets/img/2.3.1_vim.007aead6.png" alt="2.3.1_vim"></p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>Or you can use any text editor you like on your local machine, after you finished editing your code, upload your <code>loader.s</code> file to the server via MobaXterm.</p></div><p><img src="/assets/img/2.3.1_mobax.f8b8fc9c.jpg" alt="2.3.1_mobax"></p><p>Like .c file, you cannot run it directly, you have to compile this file. In terminal, type command:</p><div class="language-shell extra-class"><pre class="language-text"><code>nasm -f elf loader.s
+</code></pre></div><p>Then refresh your folder or type <code>ls</code> in your terminal, you will see the new created binary file called <code>loader.o</code>.</p><p><img src="/assets/img/2.3.1_loadero.60155d0e.png" alt="2.3.1_loadero"></p><h3 id="_2-3-2-linking-the-kernel"><a href="#_2-3-2-linking-the-kernel" aria-hidden="true" class="header-anchor">#</a> 2.3.2 Linking the kernel</h3><p>In the same folder, create a new file called <code>link.ld</code>. Then paste code below:</p><div class="language-assembly extra-class"><pre class="language-text"><code>ENTRY(loader)                /* the name of the entry label */
 
 SECTIONS {
     . = 0x00100000;          /* the code should be loaded at 1 MB */
@@ -60,13 +60,47 @@ SECTIONS {
 }
 </code></pre></div><p>Type following command to combine <code>loader.o</code> and <code>link.ld</code> into a file called <code>kernel.elf</code>:</p><div class="language-shell extra-class"><pre class="language-text"><code>ld -T link.ld -melf_i386 loader.o -o kernel.elf
 </code></pre></div><h3 id="_2-3-3-obtaining-grub"><a href="#_2-3-3-obtaining-grub" aria-hidden="true" class="header-anchor">#</a> 2.3.3 Obtaining GRUB</h3><p>We don't know what is the secret inside the file <code>stage2_eltorito</code>, but it is an important lootloader used in the book. Download it by command:</p><div class="language-shell extra-class"><pre class="language-text"><code>wget &quot;http://littleosbook.github.com/files/stage2_eltorito&quot;
-</code></pre></div><p>Or you can download from your browser then upload to server.</p><h3 id="_2-3-4-building-an-iso-image"><a href="#_2-3-4-building-an-iso-image" aria-hidden="true" class="header-anchor">#</a> 2.3.4 Building an ISO Image</h3><p>The kernel ISO image will be created by <code>genisoimage</code>.</p></div><div class="content edit-link"><!----><!----></div><div class="content page-nav"><p class="inner"><span class="prev">
+</code></pre></div><p>Or you can download from your browser then upload to server.</p><h3 id="_2-3-4-building-an-iso-image"><a href="#_2-3-4-building-an-iso-image" aria-hidden="true" class="header-anchor">#</a> 2.3.4 Building an ISO Image</h3><p>In order to run our system, we need make an ISO image so that <code>bochs</code> can load it. The kernel ISO image will be created by <code>genisoimage</code>.</p><p>First, run following commands:</p><div class="language-shell extra-class"><pre class="language-text"><code>mkdir -p iso/boot/grub				# create the folder structure
+cp stage2_eltorito iso/boot/grub/	# copy the bootloader
+cp kernel.elf iso/boot/				# copy the kernel
+</code></pre></div><p>Then create a file called <code>menu.lst</code> inside your <code>iso/boot/grub/</code> folder. <code>menu.lst</code> is the configuration file for GRUB. Inside <code>menu.lst</code>, add following config scripts:</p><div class="language- extra-class"><pre class="language-text"><code>default=0
+timeout=0
+
+title os
+kernel /boot/kernel.elf
+</code></pre></div><p>Double check the file tree shown below:</p><div class="language- extra-class"><pre class="language-text"><code>    iso
+    |-- boot
+      |-- grub
+      | |-- menu.lst
+      | |-- stage2_eltorito
+      |-- kernel.elf
+</code></pre></div><p>Make sure you placed your files in right place. I know it looks weird, but you will get familiar with this. 😉</p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>You can type command <code>tree</code> to display the file tree as picture shown below.</p></div><p><img src="/assets/img/2.3.4_filetree.78dbc631.png" alt="2.3.4_filetree"></p><p>Then run the following crazy long command 😱 :</p><div class="language-shell extra-class"><pre class="language-text"><code>genisoimage -R                              \
+            -b boot/grub/stage2_eltorito    \
+            -no-emul-boot                   \
+            -boot-load-size 4               \
+            -A os                           \
+            -input-charset utf8             \
+            -quiet                          \
+            -boot-info-table                \
+            -o os.iso                       \
+            iso
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>You can write the command above in one line without the backslash <code>\</code>.</p></div><p>If everything goes right, you will see a file called <code>os.iso</code> has been created in your current working directory.</p><p><img src="/assets/img/2.3.4_osfile.95b4c802.png" alt="2.3.4_osfile"></p><h3 id="_2-3-5-running-bochs"><a href="#_2-3-5-running-bochs" aria-hidden="true" class="header-anchor">#</a> 2.3.5 Running Bochs</h3><p>Now it's time to run your operating system in <code>Bochs</code>!</p><p><code>Bochs</code> is a kind virtual machine that can load the OS, with many debug features. We need a configuration file before we run <code>Bochs</code>. Lets create a config file called <code>bochsrc.txt</code>, then paste the simple configuration file below:</p><div class="language- extra-class"><pre class="language-text"><code>megs:            32
+display_library: sdl
+romimage:        file=/usr/share/bochs/BIOS-bochs-latest
+vgaromimage:     file=/usr/share/bochs/VGABIOS-lgpl-latest
+ata0-master:     type=cdrom, path=os.iso, status=inserted
+boot:            cdrom
+log:             bochslog.txt
+clock:           sync=realtime, time0=local
+cpu:             count=1, ips=1000000
+</code></pre></div><p>If you want to use the GUI debugger, you can change <code>display_library: sdl</code> to <code>display_library: sdl, options=&quot;gui_debug&quot;</code>.</p><p>Save your <code>bochsrc.txt</code> and then run the command:</p><div class="language-shell extra-class"><pre class="language-text"><code>bochs -f bochsrc.txt -q
+</code></pre></div><p>The <code>Bochs</code> will start and running, as the screenshot shown below:</p><p><img src="/assets/img/2.3.5_startbochs.1a42d153.jpg" alt="2.3.5_startbochs"></p><p>Type <code>c</code> or <code>continue</code> in the <code>Bochs</code> console, you should see the <code>Bochs</code> starting and displaying a console with some information from GRUB on it.</p><p><img src="/assets/img/2.3.5_continuebochs.f638cb1b.jpg" alt="2.3.5_continuebochs"></p><p>Click the quit button of the <code>Bochs</code> at the upper right corner to quit <code>Bochs</code>.</p><p><img src="/assets/img/2.3.5_quitbutton.c9579b1c.jpg" alt="2.3.5_quitbutton"></p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>You can press <code>Ctrl+C</code> to exit the current console, then type <code>quit</code> to exit <code>Bochs</code> from your terminal.</p></div><p><img src="/assets/img/2.3.5_quitbochs.0607e980.jpg" alt="2.3.5_quitbochs"></p><p>After quit, you can open the <code>bochslog.txt</code> file, or type <code>cat bochslog.txt</code> in terminal, you will find the line with <code>RAX=00000000CAFEBABE</code> or <code>EAX=CAFEBABE</code> (depending on if you are running Bochs with or without 64 bit support) at the bottom.</p><p><img src="/assets/img/2.3.5_bochslog.d44d3798.png" alt="2.3.5_bochslog"></p><p>At this point, you made the first step of you OS development journey! 🎉</p></div><div class="content edit-link"><!----><!----></div><div class="content page-nav"><p class="inner"><span class="prev">
         ← <a href="/Section1.html" class="prev">
           Section 1 Notes
         </a></span><span class="next"><a href="/Section3.html">
           Section 3 Notes
         </a> →
       </span></p></div></div></div></div>
-    <script src="/assets/js/3.935233c7.js" defer></script><script src="/assets/js/app.adfaad64.js" defer></script>
+    <script src="/assets/js/3.f16fb449.js" defer></script><script src="/assets/js/app.2f867765.js" defer></script>
   </body>
 </html>

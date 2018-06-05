@@ -3,7 +3,7 @@
 ## 2.1 Tools
 ### 2.1.1 Quick Setup
 
-We have used both Amazon Web Server(Ubuntu instance) and POP!OS as our development system. A fancy tool that we recommend for Windows user : MobaXterm.
+We have used both Amazon Web Server(Ubuntu 16.04 instance) and POP!OS(Ubuntu 18.04) as our development system. There is a very fancy tool that we recommend for Windows user : [MobaXterm](https://mobaxterm.mobatek.net/download.html).
 
 Following the original book, run the commands below to install all the essential tools that you need:
 ```shell
@@ -12,15 +12,17 @@ sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
 
 ### 2.1.2 Programming Languages
 
-You can use what ever you want, someone wrote the whole system using Assembly language only. In our notes, we stick with the original book, we use C.
+You can use what ever you want, someone wrote the whole system using Assembly language only. In our notes, we stick with the original book, only part of the system using assembly, most of the OS was written in C.
 
 ## 2.3 Hello CAFEBABE
 
-This is the starting point of writing code. We will write a very tiny OS that write `0xCAFEBABE` to the `eax` register.
+This is the starting point of writing code. We will write a very tiny OS that sent `0xCAFEBABE` to the `eax` register.
 
 ### 2.3.1 Compiling the Operating System
 
-Create an empty folder in your working directory. In here we called `section2`. Then change the working directory into the folder you just created. Then create a file called `loader.s`, and inside `loader.s`, paste the code below:
+Create an empty folder in your working directory. This will be your **root** directory. In here we called `section2`. Then change the working directory into the folder you just created (`cd section2`). 
+
+Then write your first piece of code, create a file called `loader.s`, and inside `loader.s`, paste the code below:
 
 ```assembly
 global loader                   ; the entry symbol for ELF
@@ -56,7 +58,7 @@ Or you can use any text editor you like on your local machine, after you finishe
 
 ![2.3.1_mobax](./images/section2/2.3.1_mobax.jpg)
 
-Like .c file, you cannot run it directly, you have to compile this file. In terminal, type command:
+Like `.c` file, you cannot run it directly, you have to compile this file. In terminal, type command:
 
 ```shell
 nasm -f elf loader.s
@@ -151,7 +153,7 @@ Double check the file tree shown below:
 Make sure you placed your files in right place. I know it looks weird, but you will get familiar with this. :wink:
 
 ::: tip
-You can type command `tree` to display the file tree as picture shown below.
+In your **root** directory, type command `tree` to display the file tree as picture shown below.
 :::
 ![2.3.4_filetree](./images/section2/2.3.4_filetree.png)
 
@@ -174,7 +176,7 @@ genisoimage -R                              \
 You can write the command above in one line without the backslash `\`.
 :::
 
-If everything goes right, you will see a file called `os.iso` has been created in your current working directory.
+If everything goes right, you will see a file called `os.iso` has been created in your current working (root) directory.
 
 ![2.3.4_osfile](./images/section2/2.3.4_osfile.png)
 
@@ -182,7 +184,7 @@ If everything goes right, you will see a file called `os.iso` has been created i
 
 Now it's time to run your operating system in `Bochs`!
 
-`Bochs` is a kind virtual machine that can load the OS, with many debug features. We need a configuration file before we run `Bochs`. Lets create a config file called `bochsrc.txt`, then paste the simple configuration file below:
+`Bochs` is a kind virtual machine that can load the OS, with many debug features. We need a configuration file before we run `Bochs`. Lets create a config file called `bochsrc.txt` in your **root** directory, in here its `section2/`, then paste the simple configuration script below:
 
 ```
 megs:            32
@@ -196,9 +198,10 @@ clock:           sync=realtime, time0=local
 cpu:             count=1, ips=1000000
 ```
 
-If you want to use the GUI debugger, you can change `display_library: sdl` to `display_library: sdl, options="gui_debug"`. 
+::: tip If you want to use the GUI debugger, you can change `display_library: sdl` to `display_library: sdl, options="gui_debug"`. 
+:::
 
-Save your `bochsrc.txt` and then run the command:
+Save your `bochsrc.txt, ` then run the command:
 
 ```shell
 bochs -f bochsrc.txt -q
@@ -208,7 +211,7 @@ The `Bochs` will start and running, as the screenshot shown below:
 
 ![2.3.5_startbochs](./images/section2/2.3.5_startbochs.jpg)
 
-Type `c` or `continue` in the `Bochs` console, you should see the `Bochs` starting and displaying a console with some information from GRUB on it.
+If you see a blank screen as the picture shown above, don't worry, type `c` or `continue` in **the `Bochs` console** (the righthand side window, not the left window), you should see the `Bochs` starting and displaying a console with some information from GRUB on it. Like the image shown below, notice the left window displayed some information, with a blinking cursor.
 
 ![2.3.5_continuebochs](./images/section2/2.3.5_continuebochs.jpg)
 

@@ -48,7 +48,7 @@ The code above will write a very specific number `0xCAFEBABE` to the register `e
 If you are comfortable using vim, you can create the file by `vim loader.s`. Then press `i` on your keyboard to type code. You will see the line of words `-- INSERT --` at the bottom. You can start type or paste the code from above. After you finished, press `Esc` on your keyboard, hold `Shift` then press `colon`, the cursor moved to the botton, then type `x` and press `Enter` to save your work.
 :::
 
-![2.3.1_vim](./images/section2/2.3.1_vim.jpg)
+![2.3.1_vim](./images/section2/2.3.1_vim.png)
 
 ::: tip
 Or you can use any text editor you like on your local machine, after you finished editing your code, upload your `loader.s` file to the server via MobaXterm.

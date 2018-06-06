@@ -42,7 +42,7 @@ int sum_of_three(int arg1, int arg2, int arg3) {
 }
 ```
 
-And save the code above into a file called `kmain.c`. You can name it whatever you want, it won't affect your system.
+And save the code above into a file called `kmain.c`.
 
 Back to `loader.s`, inside `loader` label, after the line of code `mov esp, kernel_stack + KERNEL_STACK_SIZE`, add the code below:
 

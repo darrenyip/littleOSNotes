@@ -102,6 +102,8 @@ loader:                         ; the loader label (defined as entry point in li
 Remember to remove or comment out the `mov eax, 0xCAFEBABE`, otherwise you won't get the expected result.
 :::
 
+![3.2_commentOut](./images/section3/3.2_commentOut.png)
+
 ## 3.3 Compiling the code
 
 Recall what we did before, we run commands to compile the `loader.s`, then combine `link.ld` and `loader.o` into a file called `kernel.elf`. And we ran the crazy long command to build an ISO image, then finally load it into `Bochs`. Since now we have the C code, we will need `gcc` to compile and combine our C code with assembly code, there will be more commands you need to type into your little terminal. That's a lot of typing work. :sob:
@@ -157,10 +159,16 @@ Save the `Makefile`, make sure the `Makefile` has been placed in the right place
 
 After run `make clean` successfully, since `make clean` will remove all the `.o` files, `kernel.elf` and `os.iso`, now the working directory(root directory) should looks like below:
 
+![3.3_makeclean](./images/section3/3.3_makeclean.png)
+
 ## 3.4 Compile and Run
 
 Finally, run the command `make run`, the `make` will compile the kernel and boot it up in `Bochs`.
 
+![3.4_makerun](./images/section3/3.4_makerun.png)
+
 After quit `Bochs`, check the `bochslog.txt`, the expected result should be right here:
+
+![3.4_bochslog](./images/section3/3.4_bochslog.png)
 
 That's all for the section 3! :tada:

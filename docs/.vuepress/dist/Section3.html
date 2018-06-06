@@ -7,19 +7,116 @@
     <meta name="description" content="">
     
     
-    <link rel="preload" href="/assets/css/6.styles.45ac861a.css" as="style"><link rel="preload" href="/assets/js/app.53a533c0.js" as="script"><link rel="preload" href="/assets/js/2.c0c8cd61.js" as="script"><link rel="prefetch" href="/assets/js/0.6d2fd5e1.js"><link rel="prefetch" href="/assets/js/1.6bdad81d.js"><link rel="prefetch" href="/assets/js/3.73baae3a.js"><link rel="prefetch" href="/assets/js/4.3355ac0a.js"><link rel="prefetch" href="/assets/js/5.07afda22.js">
+    <link rel="preload" href="/assets/css/6.styles.45ac861a.css" as="style"><link rel="preload" href="/assets/js/app.40ce23b6.js" as="script"><link rel="preload" href="/assets/js/2.c8619305.js" as="script"><link rel="prefetch" href="/assets/js/0.8ca9d839.js"><link rel="prefetch" href="/assets/js/1.07fe0b37.js"><link rel="prefetch" href="/assets/js/3.5fa5ffad.js"><link rel="prefetch" href="/assets/js/4.cb1f1f0d.js"><link rel="prefetch" href="/assets/js/5.64b7291c.js">
     <link rel="stylesheet" href="/assets/css/6.styles.45ac861a.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/" class="home-link router-link-active"><!----><span class="site-name">
       Little OS Lab
-    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Sections</a></div><div class="nav-item"><a href="/about.html" class="nav-link">About</a></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Sections</a></div><div class="nav-item"><a href="/about.html" class="nav-link">About</a></div><!----></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">little OS book notes</a></li><li><a href="/Section1.html" class="sidebar-link">Section 1 Notes</a></li><li><a href="/Section2.html" class="sidebar-link">Section 2 Notes</a></li><li><a href="/Section3.html" class="active sidebar-link">Section 3 Notes</a></li><li><a href="/Section4.html" class="sidebar-link">Section 4 Notes</a></li></ul></div><div class="page"><div class="content"><h1 id="section-3-notes"><a href="#section-3-notes" aria-hidden="true" class="header-anchor">#</a> Section 3 Notes</h1></div><div class="content edit-link"><!----><!----></div><div class="content page-nav"><p class="inner"><span class="prev">
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Sections</a></div><div class="nav-item"><a href="/about.html" class="nav-link">About</a></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Sections</a></div><div class="nav-item"><a href="/about.html" class="nav-link">About</a></div><!----></nav><ul class="sidebar-links"><li><a href="/" class="sidebar-link">little OS book notes</a></li><li><a href="/Section1.html" class="sidebar-link">Section 1 Notes</a></li><li><a href="/Section2.html" class="sidebar-link">Section 2 Notes</a></li><li><a href="/Section3.html" class="active sidebar-link">Section 3 Notes</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Section3.html#_3-1-setting-up-a-stack" class="sidebar-link">3.1 Setting Up a Stack</a></li><li class="sidebar-sub-header"><a href="/Section3.html#_3-2-calling-c-code-from-assembly" class="sidebar-link">3.2 Calling C Code From Assembly</a></li><li class="sidebar-sub-header"><a href="/Section3.html#_3-3-compiling-the-code" class="sidebar-link">3.3 Compiling the code</a></li><li class="sidebar-sub-header"><a href="/Section3.html#_3-4-compile-and-run" class="sidebar-link">3.4 Compile and Run</a></li></ul></li><li><a href="/Section4.html" class="sidebar-link">Section 4 Notes</a></li></ul></div><div class="page"><div class="content"><h1 id="section-3-notes"><a href="#section-3-notes" aria-hidden="true" class="header-anchor">#</a> Section 3 Notes</h1><p>In this section, we will use C to write some code, it is much more programmer friendly than assembly. But before we dive into C programming, we still need to write some assembly code in order to load our C program.</p><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>There is a typo in the original book, the assembly code <code>external sum_of_three</code> inside <code>loader.s</code> should be <code>extern sum_of_three</code>.</p></div><h2 id="_3-1-setting-up-a-stack"><a href="#_3-1-setting-up-a-stack" aria-hidden="true" class="header-anchor">#</a> 3.1 Setting Up a Stack</h2><p>A prerequisite for using C is a stack. To setup a stack, add the chunk of code below into <code>loader.s</code>:</p><div class="language-assembly extra-class"><pre class="language-text"><code>...
+KERNEL_STACK_SIZE equ 4096                  ; size of stack in bytes
+
+section .bss
+align 4                                     ; align at 4 bytes
+kernel_stack:                               ; label points to beginning of memory
+resb KERNEL_STACK_SIZE                  ; reserve stack for the kernel
+...
+</code></pre></div><p>Then set up the stack pointer by adding <code>esp</code> to the end of the <code>kernel_stack</code> memory:</p><div class="language-assembly extra-class"><pre class="language-text"><code>...
+loader:
+	; point esp to the start of the stack (end of memory area)
+	mov esp, kernel_stack + KERNEL_STACK_SIZE
+...
+</code></pre></div><h2 id="_3-2-calling-c-code-from-assembly"><a href="#_3-2-calling-c-code-from-assembly" aria-hidden="true" class="header-anchor">#</a> 3.2 Calling C Code From Assembly</h2><p>Now lets write a very simple C code, much simpler than hello world:</p><div class="language-c extra-class"><pre class="language-c"><code><span class="token comment">/* In your C program file */</span>
+<span class="token keyword">int</span> <span class="token function">sum_of_three</span><span class="token punctuation">(</span><span class="token keyword">int</span> arg1<span class="token punctuation">,</span> <span class="token keyword">int</span> arg2<span class="token punctuation">,</span> <span class="token keyword">int</span> arg3<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> arg1 <span class="token operator">+</span> arg2 <span class="token operator">+</span> arg3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>And save the code above into a file called <code>kmain.c</code>. You can name it whatever you want, it won't affect your system.</p><p>Back to <code>loader.s</code>, inside <code>loader</code> label, after the line of code <code>mov esp, kernel_stack + KERNEL_STACK_SIZE</code>, add the code below:</p><div class="language-assembly extra-class"><pre class="language-text"><code>...
+	loader:
+        mov esp, kernel_stack + KERNEL_STACK_SIZE
+        ; the function sum_of_three is defined in kmain.c
+        extern sum_of_three
+        push dword 3            ; arg3
+        push dword 2            ; arg2
+        push dword 1            ; arg1
+        ; call the function, the result will be in eax
+        call sum_of_three
+...
+</code></pre></div><p>The code above will call the function <code>sum_of_three</code>, where it has been defined in <code>kmain.c</code>, then send 3 numbers to the function. Here the 3 numbers are <code>1</code>, <code>2</code>, <code>3</code>. Since the function is addition, we should expect to see the result <code>6</code> in the <code>EAX</code> register. If you don't know why its <code>6</code>, take out your calculator and compute <code>1+2+3</code> and you will get the same result as ours. 🤣</p><p>If you got lost, here is the code inside <code>loader.s</code>:</p><div class="language-assembly extra-class"><pre class="language-text"><code>global loader                   ; the entry symbol for ELF
+
+MAGIC_NUMBER equ 0x1BADB002     ; define the magic number constant
+FLAGS        equ 0x0            ; multiboot flags
+CHECKSUM     equ -MAGIC_NUMBER  ; calculate the checksum
+                                ; (magic number + checksum + flags should equal 0)
+
+KERNAL_STACK_SIZE equ 4096      ; size of stack in bytes
+
+section .bss
+align 4                         ; align at 4 bytes
+kernal_stack:                   ; label points to beginning of memory
+    resb KERNAL_STACK_SIZE      ; reserve stack for the kernel
+
+section .text:                  ; start of the text (code) section
+align 4                         ; the code must be 4 byte aligned
+    dd MAGIC_NUMBER             ; write the magic number to the machine code,
+    dd FLAGS                    ; the flags,
+    dd CHECKSUM                 ; and the checksum
+
+loader:                         ; the loader label (defined as entry point in linker script)
+    mov esp, kernal_stack + KERNAL_STACK_SIZE
+    extern sum_of_three       ; the function sum_of_three is defined elsewhere
+    push dword 3                ; arg3
+    push dword 2                ; arg2
+    push dword 1                ; arg1
+    call sum_of_three           ; call the function, the result will be in eax
+    ; mov eax, 0xCAFEBABE         ; place the number 0xCAFEBABE in the register eax
+.loop:
+    jmp .loop                   ; loop forever
+
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>Remember to remove or comment out the <code>mov eax, 0xCAFEBABE</code>, otherwise you won't get the expected result.</p></div><p><img src="/assets/img/3.2_commentOut.25e70f85.png" alt="3.2_commentOut"></p><h2 id="_3-3-compiling-the-code"><a href="#_3-3-compiling-the-code" aria-hidden="true" class="header-anchor">#</a> 3.3 Compiling the code</h2><p>Recall what we did before, we run commands to compile the <code>loader.s</code>, then combine <code>link.ld</code> and <code>loader.o</code> into a file called <code>kernel.elf</code>. And we ran the crazy long command to build an ISO image, then finally load it into <code>Bochs</code>. Since now we have the C code, we will need <code>gcc</code> to compile and combine our C code with assembly code, there will be more commands you need to type into your little terminal. That's a lot of typing work. 😭</p><p>That's is why we need a handy tool called <code>make</code>. In your root directory, create a file called <code>Makefile</code>. Then paste the script below:</p><div class="language-makefile extra-class"><pre class="language-makefile"><code>OBJECTS <span class="token operator">=</span> loader.o kmain.o
+CC <span class="token operator">=</span> gcc
+CFLAGS <span class="token operator">=</span> -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector \
+            -nostartfiles -nodefaultlibs -Wall -Wextra -Werror -c
+LDFLAGS <span class="token operator">=</span> -T link.ld -melf_i386
+AS <span class="token operator">=</span> nasm
+ASFLAGS <span class="token operator">=</span> -f elf
+
+<span class="token symbol">all</span><span class="token punctuation">:</span> kernel.elf
+
+<span class="token symbol">kernel.elf</span><span class="token punctuation">:</span> <span class="token variable">$</span><span class="token punctuation">(</span>OBJECTS<span class="token punctuation">)</span>
+	ld <span class="token variable">$</span><span class="token punctuation">(</span>LDFLAGS<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>OBJECTS<span class="token punctuation">)</span> -o kernel.elf
+
+<span class="token symbol">os.iso</span><span class="token punctuation">:</span> kernel.elf
+	cp kernel.elf iso/boot/kernel.elf
+	genisoimage -R                              \
+				-b boot/grub/stage2_eltorito    \
+                -no-emul-boot                   \
+                -boot-load-size 4               \
+                -A os                           \
+                -input-charset utf8             \
+                -quiet                          \
+                -boot-info-table                \
+                -o os.iso                       \
+                iso
+
+<span class="token symbol">run</span><span class="token punctuation">:</span> os.iso
+	bochs -f bochsrc.txt -q
+
+<span class="token symbol">%.o</span><span class="token punctuation">:</span> %.c
+	<span class="token variable">$</span><span class="token punctuation">(</span>CC<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>CFLAGS<span class="token punctuation">)</span>  <span class="token variable">$&lt;</span> -o <span class="token variable">$@</span>
+
+<span class="token symbol">%.o</span><span class="token punctuation">:</span> %.s
+	<span class="token variable">$</span><span class="token punctuation">(</span>AS<span class="token punctuation">)</span> <span class="token variable">$</span><span class="token punctuation">(</span>ASFLAGS<span class="token punctuation">)</span> <span class="token variable">$&lt;</span> -o <span class="token variable">$@</span>
+
+<span class="token symbol">clean</span><span class="token punctuation">:</span>
+	rm -rf *.o kernel.elf os.iso
+
+</code></pre></div><div class="tip custom-block"><p class="custom-block-title">TIP</p><p>The indentation is very important in the <code>Makefile</code>. A <strong>tab</strong> must come at the beginning of every line in the recipe to distinguish recipes from other lines in the <code>Makefile</code>. Check out this <a href="https://www.gnu.org/software/make/manual/html_node/Simple-Makefile.html#Simple-Makefile" target="_blank" rel="noopener noreferrer">official tutorial<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a> for more details.</p></div><p>Save the <code>Makefile</code>, make sure the <code>Makefile</code> has been placed in the right place(root directory). You can type <code>make clean</code> in your terminal to see whether the <code>make</code> has been installed or the <code>Makefile</code> has been written correctly.</p><p>After run <code>make clean</code> successfully, since <code>make clean</code> will remove all the <code>.o</code> files, <code>kernel.elf</code> and <code>os.iso</code>, now the working directory(root directory) should looks like below:</p><p><img src="/assets/img/3.3_makeclean.746654af.png" alt="3.3_makeclean"></p><h2 id="_3-4-compile-and-run"><a href="#_3-4-compile-and-run" aria-hidden="true" class="header-anchor">#</a> 3.4 Compile and Run</h2><p>Finally, run the command <code>make run</code>, the <code>make</code> will compile the kernel and boot it up in <code>Bochs</code>.</p><p><img src="/assets/img/3.4_makerun.7296a39d.png" alt="3.4_makerun"></p><p>After quit <code>Bochs</code>, check the <code>bochslog.txt</code>, the expected result should be right here:</p><p><img src="/assets/img/3.4_bochslog.add503bf.png" alt="3.4_bochslog"></p><p>That's all for the section 3! 🎉</p></div><div class="content edit-link"><!----><!----></div><div class="content page-nav"><p class="inner"><span class="prev">
         ← <a href="/Section2.html" class="prev">
           Section 2 Notes
         </a></span><span class="next"><a href="/Section4.html">
           Section 4 Notes
         </a> →
       </span></p></div></div></div></div>
-    <script src="/assets/js/2.c0c8cd61.js" defer></script><script src="/assets/js/app.53a533c0.js" defer></script>
+    <script src="/assets/js/2.c8619305.js" defer></script><script src="/assets/js/app.40ce23b6.js" defer></script>
   </body>
 </html>

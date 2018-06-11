@@ -262,7 +262,11 @@ We should call `main` instead of `sum_of_three`.
 
 Finally run your `Bochs`, see what happened, you should see some similar result as ours:
 
+![4.2_writealetter](./images/section4/4.2_writealetter.png)
 
+![4.2_writeasentence](./images/section4/4.2_writeasentence.png)
+
+![4.2_writewithcursor](./images/section4/4.2_writewithcursor.png)
 
 ::: tip
 If you got the error said `make: *** No rule to make target 'serialport.o', needed by 'kernel.elf'.  Stop. ` , you can remove the `serialport.o` in the `Makefile` since we did not write it yet. You will need to add it latter.
@@ -270,7 +274,7 @@ If you got the error said `make: *** No rule to make target 'serialport.o', need
 
 
 
-## 4.2 The Serial Ports
+## 4.3 The Serial Ports
 
 This part is a little bit hard to understand, but you can think about serial port as an interface for you to input and output. For example, you can input some text from your code and then write into a file.
 
@@ -493,3 +497,5 @@ int main() {
 
 
 Finally run the `Bochs`, there will be a file called `com1.out` file generated in the `root` directory. Type command `cat com1.out` in the terminal, the string `port message!` where defined in the `kmain.c` will displayed on the terminal! :tada:
+
+![4.3_serialportResult](./images/section4/4.3_serialportResult.png)

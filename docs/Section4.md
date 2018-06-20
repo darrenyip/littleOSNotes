@@ -179,7 +179,7 @@ You can find the magic number of the color in [from original book](https://littl
 
 
 
-It's not easy to move the blinking cursor. We need create a new assembly file `io.s` in the `root` directory with the "outbound" function:
+It's not easy to move the blinking cursor. This job could be done via two different I/O ports, one for accepting data and other one for describing the data being received. We need create a new assembly file `io.s` in the `root` directory with the "outbound" function, so that the assembly code can be accessed from C via the calling:
 
 ```assembly
 global outb             ; make the label outb visible outside this file
@@ -260,16 +260,20 @@ loader:
 
 We should call `main` instead of `sum_of_three`.
 
-Finally run your `Bochs`, see what happened, you should see some similar result as ours:
+Finally run your `Bochs`, see what happened, you should see some similar result as ours, depends on which function you called in `main`.
+
+Result of `fb_write_cell()`, notice the letter `A` with the green background at the up left corner:
 
 ![4.2_writealetter](./images/section4/4.2_writealetter.png)
 
+Result of `fb_write_string()`, the cursor won't follow at the end of the sentence:
 ![4.2_writeasentence](./images/section4/4.2_writeasentence.png)
 
+Result of `fb_write_cursor()`, the cursor is followed at the end of a sentence:
 ![4.2_writewithcursor](./images/section4/4.2_writewithcursor.png)
 
 ::: tip
-If you got the error said `make: *** No rule to make target 'serialport.o', needed by 'kernel.elf'.  Stop. ` , you can remove the `serialport.o` in the `Makefile` since we did not write it yet. You will need to add it latter.
+If you got the error said `make: *** No rule to make target 'serialport.o', needed by 'kernel.elf'.  Stop. `, you can remove the `serialport.o` in the `Makefile` since we did not write it yet. You will need to add it latter.
 :::
 
 
@@ -278,7 +282,7 @@ If you got the error said `make: *** No rule to make target 'serialport.o', need
 
 This part is a little bit hard to understand, but you can think about serial port as an interface for you to input and output. For example, you can input some text from your code and then write into a file.
 
-We need to add few lines of assembly code to handle the input port, add the code inside `io.s`:
+We need to add few lines of assembly code to handle the writing data via data I/O port, add the `inb` assembly function to read the contents of an I/O port. So inside `io.s`:
 
 ```assembly
 global outb             ; make the label outb visible outside this file
@@ -297,7 +301,7 @@ inb:
 
 
 
-In `headers/io.h` file, adding the defined ports, and connecting the "inbound" assembly code :
+In `headers/io.h` file, adding the configuration of serial port, and connecting the "inbound" assembly code :
 
 ```c
 /* The I/O ports */
@@ -380,9 +384,9 @@ void serial_configure_baud_rate(unsigned short com, unsigned short divisor)
 void serial_configure_line(unsigned short com)
 {
     /* Bit:     | 7 | 6 | 5 4 3 | 2 | 1 0 |
-        * Content: | d | b | prty  | s | dl  |
-        * Value:   | 0 | 0 | 0 0 0 | 0 | 1 1 | = 0x03
-        */
+     * Content: | d | b | prty  | s | dl  |
+     * Value:   | 0 | 0 | 0 0 0 | 0 | 1 1 | = 0x03
+     */
     outb(SERIAL_LINE_COMMAND_PORT(com), 0x03);
 }
 
